@@ -1,0 +1,10 @@
+@mixin reset() {
+  font-size: $font-size-base;
+  font-family: $font-family;
+  color: $text-color;
+  line-height: 1.5;
+  box-sizing: border-box;
+  *{
+    box-sizing: border-box;
+  }
+}

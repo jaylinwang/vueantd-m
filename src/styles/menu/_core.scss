@@ -1,0 +1,107 @@
+.#{$ui-prefix}-menu {
+  @include reset();
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  list-style: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+}
+
+.#{$ui-prefix}-menu-item {
+  padding-left: 24px;
+  padding-right: 24px;
+  line-height: 42px;
+  position: relative;
+
+  .#{$ui-prefix}-tooltip{
+    display: block;
+  }
+  .#{$ui-prefix}-popper{
+    line-height: 1.5;
+  }
+  &:hover {
+    color: $blue-light;
+  }
+  cursor: pointer;
+}
+
+.#{$ui-prefix}-submenu {
+  &-title {
+    position: relative;
+    padding-left: 24px;
+    padding-right: 24px;
+    line-height: 42px;
+    cursor: pointer;
+
+    &:hover {
+      color: $blue-light;
+    }
+    &:after {
+      position: absolute;
+      right: 24px;
+      top: 0;
+      display: inline-block;
+      font-family: "vantd";
+      font-size: 10px;
+      content: "\ee29";
+      transition: all .3s;
+    }
+  }
+  &-content-wrapper{
+    overflow: hidden;
+    transition: all .3s;
+  }
+  &-content {
+    .#{$ui-prefix}-menu-item {
+      padding-left: 24px * 2;
+    }
+  }
+  &.open {
+    background-color: rgba(#ecf6fd, .5);
+    .#{$ui-prefix}-submenu-title {
+      &:after {
+        position: absolute;
+        right: 24px;
+        top: 0;
+        display: inline-block;
+        font-family: "vantd";
+        content: "\ee29";
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+  .#{$ui-prefix}-menu-item {
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      content: " ";
+      display: inline-block;
+      width: 2px;
+      height: 42px;
+      background-color: $blue-light;
+      transform: scaleY(0);
+      transition: all .1s;
+    }
+    &.selected {
+      background-color: #ecf6fd;
+      color: $blue-light;
+      &:after {
+        transform: scaleY(1);
+      }
+    }
+  }
