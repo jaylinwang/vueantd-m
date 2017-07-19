@@ -139,6 +139,10 @@
     margin-right: 0;
     margin-bottom: 0;
     border-radius: 0;
+
+    .v-icon{
+      font-size: 12px;
+    }
   }
   .#{$ui-prefix}-btn:first-child{
     border-top-left-radius: 4px;
