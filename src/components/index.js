@@ -6,6 +6,8 @@ import { Menu, MenuItem, Submenu } from './menu'
 import { Progress } from './progress'
 import { Upload } from './upload'
 import { Carousel, CarouselItem } from './carousel'
+import { Input } from './input'
+import { Form, FormItem } from './form'
 
 const install = (Vue) => {
   Vue.component(Row.name, Row)
@@ -22,6 +24,9 @@ const install = (Vue) => {
   Vue.component(Upload.name, Upload)
   Vue.component(Carousel.name, Carousel)
   Vue.component(CarouselItem.name, CarouselItem)
+  Vue.component(Input.name, Input)
+  Vue.component(Form.name, Form)
+  Vue.component(FormItem.name, FormItem)
 }
 
 export {
@@ -37,7 +42,10 @@ export {
   Progress,
   Upload,
   Carousel,
-  CarouselItem
+  CarouselItem,
+  Input,
+  Form,
+  FormItem
 }
 
 export default {

@@ -1,0 +1,123 @@
+.#{$ui-prefix}-input{
+  @include reset();
+  display: inline-block;
+  input,textarea{
+    font-size: 14px;
+    -webkit-appearance: none;
+  }
+  &-origin{
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid $color-default;
+    border-radius: 4px;
+
+    &:focus{
+      outline: none;
+      border-color: $blue-light;
+      box-shadow: 0 0 0 2px rgba($blue-light, .2);
+    }
+  }
+  &-icon{
+    padding: 12px 16px;
+  }
+}
+
+.#{$ui-prefix}-input__hasicon{
+  position: relative;
+  .#{$ui-prefix}-input-origin{
+    padding-right: 60px + 10;
+  }
+  .#{$ui-prefix}-input-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+
+.#{$ui-prefix}-input-large{
+  .#{$ui-prefix}-input-origin,
+  .#{$ui-prefix}-input-icon{
+    padding: 16px 16px;
+  }
+}
+
+.#{$ui-prefix}-input-small{
+  .#{$ui-prefix}-input-origin,
+  .#{$ui-prefix}-input-icon{
+    padding: 8px 16px;
+  }
+}
+
+
+.#{$ui-prefix}-textarea-origin{
+    display: inline-block;
+    padding: 8px;
+    line-height: 1.5;
+    border: 1px solid $color-default;
+    border-radius: 4px;
+    overflow-y: scroll;
+    resize: vertical;
+    outline: none;
+    &:focus{
+      outline: none;
+      border-color: $blue-light;
+      box-shadow: 0 0 0 2px rgba($blue-light, .2);
+    }
+}
+
+
+.#{$ui-prefix}-input__hasbefore{
+  display: flex;
+  .#{$ui-prefix}-input-inner{
+    flex: 1;
+  }
+  .#{$ui-prefix}-input-origin{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.#{$ui-prefix}-input-before{
+  background-color: #DDD;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  .#{$ui-prefix}-select{
+    &-input{
+      background-color: #DDD;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.#{$ui-prefix}-input__hasafter{
+  display: flex;
+  .#{$ui-prefix}-input-inner{
+    flex: 1;
+  }
+  .#{$ui-prefix}-input-origin{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.#{$ui-prefix}-input-after{
+  background-color: #DDD;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  .#{$ui-prefix}-select{
+    &-input{
+      background-color: #DDD;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}

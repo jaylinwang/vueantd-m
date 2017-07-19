@@ -38,6 +38,12 @@ const routes = [{
 }, {
   path: '/carousel',
   component: require('./carousel/index.vue')
+}, {
+  path: '/input',
+  component: require('./input/index.vue')
+}, {
+  path: '/form',
+  component: require('./form/index.vue')
 }]
 
 const router = new VueRouter({
