@@ -1,7 +1,8 @@
 <template>
 <div
   class="v-carousel"
-  :style="carouselStyle">
+  :style="carouselStyle"
+  ref="carousel">
   <div
     class="v-carousel-container"
     :style="containerStyle"
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+import Hammer from 'hammerjs'
 export default {
   name: 'vCarousel',
 
@@ -172,6 +174,15 @@ export default {
     } else {
       vm.width = vm.$el.clientWidth
     }
+    console.log(vm.$refs.carousel)
+    console.log(vm.$el)
+    let hammer = new Hammer(vm.$el, {})
+    hammer.on('swipeleft', function (e) {
+      vm.nextPage()
+    })
+    hammer.on('swiperight', function (e) {
+      vm.prevPage()
+    })
   },
 
   methods: {

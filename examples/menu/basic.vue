@@ -12,11 +12,11 @@
       <span slot="title">
          <v-icon type="message"></v-icon> 导航菜单 三
       </span>
-      <v-menu-item label="3">
-        选项 一
-      </v-menu-item>
-      <v-menu-item label="4">
-        选项 二
+      <v-menu-item
+        v-for="menu in submenuList"
+        :key="menu.label"
+        :label="menu.label">
+        {{ menu.text }}
       </v-menu-item>
     </v-submenu>
     <v-submenu label="s2">
@@ -43,8 +43,22 @@
 export default {
   data () {
     return {
-      selectedMenu: ''
+      selectedMenu: '',
+      submenuList: []
     }
+  },
+
+  created () {
+    const vm = this
+    setTimeout(() => {
+      vm.submenuList = [{
+        label: 3,
+        text: '选项一'
+      }, {
+        label: 4,
+        text: '选项二'
+      }]
+    }, 1000)
   }
 }
 </script>

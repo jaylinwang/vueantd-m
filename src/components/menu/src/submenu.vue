@@ -80,7 +80,7 @@ export default {
     }
   },
 
-  created () {
+  updated () {
     const vm = this
     vm.$nextTick(() => {
       vm.contentHeight = `${vm.$refs.content.clientHeight}px`

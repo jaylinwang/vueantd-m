@@ -934,7 +934,7 @@ html, body {
     transform: rotate(360deg); } }
 
 .v-btn {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
   color: #595959;
   line-height: 1.5;
@@ -960,7 +960,7 @@ html, body {
     cursor: default; }
   .v-btn .v-icon {
     vertical-align: middle;
-    font-size: 13px; }
+    font-size: 15px; }
   .v-btn.disabled {
     color: #bfbfbf;
     border-color: rgba(191, 191, 191, 0.2);
@@ -1089,7 +1089,7 @@ html, body {
     box-shadow: 0 0 0 4px rgba(244, 110, 101, 0.1); } }
 
 .v-collapse {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
   color: #595959;
   line-height: 1.5;
@@ -1123,7 +1123,7 @@ html, body {
     padding: 16px; }
 
 .v-menu {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
   color: #595959;
   line-height: 1.5;
@@ -1212,7 +1212,7 @@ html, body {
     transform: scaleY(1); }
 
 .v-progress {
-  font-size: 14px;
+  font-size: 16px;
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
   color: #595959;
   line-height: 1.5;
@@ -1283,7 +1283,7 @@ html, body {
 
 .v-upload {
   font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
-  font-size: 14px; }
+  font-size: 16px; }
   .v-upload * {
     user-select: none;
     -webkit-tap-highlight-color: transparent; }
@@ -1530,3 +1530,165 @@ html, body {
 
 .v-carousel-item {
   float: left; }
+
+.v-input {
+  font-size: 16px;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #595959;
+  line-height: 1.5;
+  box-sizing: border-box;
+  display: inline-block; }
+  .v-input * {
+    box-sizing: border-box; }
+  .v-input input, .v-input textarea {
+    font-size: 14px;
+    -webkit-appearance: none; }
+  .v-input-origin {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px; }
+    .v-input-origin:focus {
+      outline: none;
+      border-color: #49a9ee;
+      box-shadow: 0 0 0 2px rgba(73, 169, 238, 0.2); }
+  .v-input-icon {
+    padding: 12px 16px; }
+
+.v-input__hasicon {
+  position: relative; }
+  .v-input__hasicon .v-input-origin {
+    padding-right: 70px; }
+  .v-input__hasicon .v-input-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    text-align: center;
+    cursor: pointer; }
+
+.v-input-large .v-input-origin,
+.v-input-large .v-input-icon {
+  padding: 16px 16px; }
+
+.v-input-small .v-input-origin,
+.v-input-small .v-input-icon {
+  padding: 8px 16px; }
+
+.v-textarea-origin {
+  display: inline-block;
+  padding: 8px;
+  line-height: 1.5;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px;
+  overflow-y: scroll;
+  resize: vertical;
+  outline: none; }
+  .v-textarea-origin:focus {
+    outline: none;
+    border-color: #49a9ee;
+    box-shadow: 0 0 0 2px rgba(73, 169, 238, 0.2); }
+
+.v-input__hasbefore {
+  display: flex; }
+  .v-input__hasbefore .v-input-inner {
+    flex: 1; }
+  .v-input__hasbefore .v-input-origin {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+
+.v-input-before {
+  background-color: #DDD;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  text-align: center;
+  cursor: pointer; }
+  .v-input-before .v-select-input {
+    background-color: #DDD;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+
+.v-input__hasafter {
+  display: flex; }
+  .v-input__hasafter .v-input-inner {
+    flex: 1; }
+  .v-input__hasafter .v-input-origin {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0; }
+
+.v-input-after {
+  background-color: #DDD;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  text-align: center;
+  cursor: pointer; }
+  .v-input-after .v-select-input {
+    background-color: #DDD;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0; }
+
+.v-form {
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
+  font-size: 16px;
+  line-height: 1; }
+  .v-form * {
+    box-sizing: border-box; }
+
+.v-form-item {
+  margin-bottom: 16px; }
+  .v-form-item-body {
+    position: relative; }
+  .v-form-item-error {
+    position: absolute;
+    font-size: 14px;
+    color: #f46e65; }
+  .v-form-item.has-error .v-input-inner::after {
+    position: absolute;
+    content: "\ee48";
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    top: 50%;
+    right: 4px;
+    margin-top: -8px;
+    font-size: 14px;
+    color: #f46e65;
+    font-family: "vantd"; }
+  .v-form-item.has-error .v-input-origin {
+    border-color: #f46e65; }
+  .v-form-item.has-error .v-select-input {
+    border-color: #f46e65; }
+    .v-form-item.has-error .v-select-input::after {
+      position: absolute;
+      content: "\ee48";
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+      line-height: 16px;
+      top: 50%;
+      right: 4px;
+      margin-top: -8px;
+      font-size: 14px;
+      color: #f46e65;
+      font-family: "vantd"; }
+
+.v-form-horizontal .v-form-item {
+  display: flex; }
+  .v-form-horizontal .v-form-item-title {
+    line-height: 28px;
+    padding-right: 16px; }
+  .v-form-horizontal .v-form-item-body {
+    flex: 1; }
+
+.v-form-vertical .v-form-item-title {
+  line-height: 28px; }
+
+.v-form-inline .v-form-item {
+  display: inline-block;
+  margin-right: 16px; }
+  .v-form-inline .v-form-item-title {
+    display: inline-block;
+    padding-right: 8px; }
+  .v-form-inline .v-form-item-body {
+    display: inline-block; }
