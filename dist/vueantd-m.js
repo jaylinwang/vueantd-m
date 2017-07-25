@@ -3048,9 +3048,19 @@ exports.default = {
     }
   },
 
+  updated: function updated() {
+    var vm = this;
+    this.$nextTick(function () {
+      var contentKey = 'content_' + vm.label;
+      vm.contentHeight = vm.$refs[contentKey] && vm.$refs[contentKey].clientHeight + 'px';
+    });
+  },
   mounted: function mounted() {
-    var contentKey = 'content_' + this.label;
-    this.contentHeight = this.$refs[contentKey] && this.$refs[contentKey].clientHeight + 'px';
+    var vm = this;
+    this.$nextTick(function () {
+      var contentKey = 'content_' + vm.label;
+      vm.contentHeight = vm.$refs[contentKey] && vm.$refs[contentKey].clientHeight + 'px';
+    });
   },
 
 

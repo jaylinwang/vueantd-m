@@ -44,6 +44,12 @@ const routes = [{
 }, {
   path: '/form',
   component: require('./form/index.vue')
+}, {
+  path: '/modal',
+  component: require('./modal/index.vue')
+}, {
+  path: '/message',
+  component: require('./message/index.vue')
 }]
 
 const router = new VueRouter({

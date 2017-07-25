@@ -8,6 +8,8 @@ import { Upload } from './upload'
 import { Carousel, CarouselItem } from './carousel'
 import { Input } from './input'
 import { Form, FormItem } from './form'
+import { Modal, FastModal } from './modal'
+import { Message } from './message'
 
 const install = (Vue) => {
   Vue.component(Row.name, Row)
@@ -27,6 +29,10 @@ const install = (Vue) => {
   Vue.component(Input.name, Input)
   Vue.component(Form.name, Form)
   Vue.component(FormItem.name, FormItem)
+  Vue.component(Modal.name, Modal)
+
+  Vue.prototype.$modal = FastModal
+  Vue.prototype.$message = Message
 }
 
 export {
@@ -45,7 +51,9 @@ export {
   CarouselItem,
   Input,
   Form,
-  FormItem
+  FormItem,
+  Modal,
+  FastModal
 }
 
 export default {

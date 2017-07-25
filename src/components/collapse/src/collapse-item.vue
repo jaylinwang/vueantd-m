@@ -84,9 +84,20 @@ export default {
     }
   },
 
+  updated () {
+    const vm = this
+    this.$nextTick(() => {
+      let contentKey = `content_${vm.label}`
+      vm.contentHeight = vm.$refs[contentKey] && `${vm.$refs[contentKey].clientHeight}px`
+    })
+  },
+
   mounted () {
-    let contentKey = `content_${this.label}`
-    this.contentHeight = this.$refs[contentKey] && `${this.$refs[contentKey].clientHeight}px`
+    const vm = this
+    this.$nextTick(() => {
+      let contentKey = `content_${vm.label}`
+      vm.contentHeight = vm.$refs[contentKey] && `${vm.$refs[contentKey].clientHeight}px`
+    })
   },
 
   methods: {
