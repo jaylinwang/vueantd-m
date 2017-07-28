@@ -10,6 +10,7 @@ import { Input } from './input'
 import { Form, FormItem } from './form'
 import { Modal, FastModal } from './modal'
 import { Message } from './message'
+import { Masker } from './masker'
 
 const install = (Vue) => {
   Vue.component(Row.name, Row)
@@ -30,6 +31,7 @@ const install = (Vue) => {
   Vue.component(Form.name, Form)
   Vue.component(FormItem.name, FormItem)
   Vue.component(Modal.name, Modal)
+  Vue.component(Masker.name, Masker)
 
   Vue.prototype.$modal = FastModal
   Vue.prototype.$message = Message
@@ -53,7 +55,9 @@ export {
   Form,
   FormItem,
   Modal,
-  FastModal
+  FastModal,
+  Message,
+  Masker
 }
 
 export default {

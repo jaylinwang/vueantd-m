@@ -174,8 +174,6 @@ export default {
     } else {
       vm.width = vm.$el.clientWidth
     }
-    console.log(vm.$refs.carousel)
-    console.log(vm.$el)
     let hammer = new Hammer(vm.$el, {})
     hammer.on('swipeleft', function (e) {
       vm.nextPage()

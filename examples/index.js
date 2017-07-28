@@ -50,6 +50,9 @@ const routes = [{
 }, {
   path: '/message',
   component: require('./message/index.vue')
+}, {
+  path: '/masker',
+  component: require('./masker/index.vue')
 }]
 
 const router = new VueRouter({
