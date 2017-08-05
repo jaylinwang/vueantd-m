@@ -11,6 +11,8 @@ import { Form, FormItem } from './form'
 import { Modal, FastModal } from './modal'
 import { Message } from './message'
 import { Masker } from './masker'
+import { Picker } from './picker'
+import { DatePicker, MonthPicker } from './date-picker'
 
 const install = (Vue) => {
   Vue.component(Row.name, Row)
@@ -32,6 +34,9 @@ const install = (Vue) => {
   Vue.component(FormItem.name, FormItem)
   Vue.component(Modal.name, Modal)
   Vue.component(Masker.name, Masker)
+  Vue.component(Picker.name, Picker)
+  Vue.component(DatePicker.name, DatePicker)
+  Vue.component(MonthPicker.name, MonthPicker)
 
   Vue.prototype.$modal = FastModal
   Vue.prototype.$message = Message
@@ -57,7 +62,10 @@ export {
   Modal,
   FastModal,
   Message,
-  Masker
+  Masker,
+  Picker,
+  DatePicker,
+  MonthPicker
 }
 
 export default {

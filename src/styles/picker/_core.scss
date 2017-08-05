@@ -1,0 +1,85 @@
+.#{$ui-prefix}-picker{
+
+  &.open{
+    .#{$ui-prefix}-picker-mask{
+      top: 0;
+    }
+    .#{$ui-prefix}-picker-container{
+      transform: translateY(0);
+    }
+  }
+  &-container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1001;
+    background-color: #FFF;
+    transform: translateY(100%);
+    transition: all .3s;
+  }
+  &-mask{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .6);
+  }
+  &-header{
+    display: flex;
+    justify-content: space-between;
+    line-height: 48px;
+    background-color: #f2f2f2;
+  }
+
+  &-cancel{
+    width: 60px;
+    padding-left: 16px;
+    cursor: pointer;
+  }
+  &-submit{
+    width: 60px;
+    padding-right: 16px;
+    text-align: right;
+    cursor: pointer;
+    color: $blue-light;
+  }
+  &-body{
+    background-color: #FFF;
+    overflow: hidden;
+    display: flex;
+  }
+}
+
+.#{$ui-prefix}-picker-group{
+  position: relative;
+  flex: 1;
+  &-mask{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .95), rgba(255, 255, 255, .09), rgba(255, 255, 255, .95));
+    z-index: 1003;
+  }
+  &-selected{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 36px * 3;
+    line-height: 36px;
+    height: 36px;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+  }
+}
+
+.#{$ui-prefix}-picker-item{
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.#{$ui-prefix}-picker-content{
+  height: 36px * 7;
+}

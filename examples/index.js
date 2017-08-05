@@ -53,6 +53,12 @@ const routes = [{
 }, {
   path: '/masker',
   component: require('./masker/index.vue')
+}, {
+  path: '/picker',
+  component: require('./picker/index.vue')
+}, {
+  path: '/date-picker',
+  component: require('./date-picker/index.vue')
 }]
 
 const router = new VueRouter({
