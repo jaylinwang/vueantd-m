@@ -59,6 +59,9 @@ const routes = [{
 }, {
   path: '/date-picker',
   component: require('./date-picker/index.vue')
+}, {
+  path: '/radio',
+  component: require('./radio/index.vue')
 }]
 
 const router = new VueRouter({

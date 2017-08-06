@@ -1875,3 +1875,160 @@ html, body {
     right: 0;
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.8); }
+
+.v-picker.open .v-picker-mask {
+  top: 0; }
+
+.v-picker.open .v-picker-container {
+  transform: translateY(0); }
+
+.v-picker-container {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1001;
+  background-color: #FFF;
+  transform: translateY(100%);
+  transition: all .3s; }
+
+.v-picker-mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6); }
+
+.v-picker-header {
+  display: flex;
+  justify-content: space-between;
+  line-height: 48px;
+  background-color: #f2f2f2; }
+
+.v-picker-cancel {
+  width: 60px;
+  padding-left: 16px;
+  cursor: pointer; }
+
+.v-picker-submit {
+  width: 60px;
+  padding-right: 16px;
+  text-align: right;
+  cursor: pointer;
+  color: #49a9ee; }
+
+.v-picker-body {
+  background-color: #FFF;
+  overflow: hidden;
+  display: flex; }
+
+.v-picker-group {
+  position: relative;
+  flex: 1; }
+  .v-picker-group-mask {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.95));
+    z-index: 1003; }
+  .v-picker-group-selected {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 108px;
+    line-height: 36px;
+    height: 36px;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD; }
+
+.v-picker-item {
+  height: 36px;
+  line-height: 36px;
+  text-align: center; }
+
+.v-picker-content {
+  height: 252px; }
+
+.v-radio {
+  display: inline-block;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer; }
+  .v-radio:hover .v-radio-input {
+    border-color: #108ee9; }
+
+.v-radio-input {
+  position: relative;
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  vertical-align: text-bottom;
+  border-radius: 14px;
+  border: 1px solid #D9D9D9;
+  transition: all 200ms; }
+  .v-radio-input__origin {
+    display: none; }
+  .v-radio-input__inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    margin-top: -3px;
+    border-radius: 6px;
+    background-color: #FFF;
+    transform: scale(0);
+    transition: all 200ms; }
+
+.v-radio-label {
+  padding-left: 2px;
+  line-height: 16px; }
+
+.v-radio.checked .v-radio-input {
+  border-color: #108ee9; }
+  .v-radio.checked .v-radio-input__inner {
+    background-color: #108ee9;
+    transform: scale(1); }
+
+.v-radio.disabled {
+  cursor: not-allowed; }
+  .v-radio.disabled .v-radio-input {
+    border-color: #bfbfbf;
+    background-color: rgba(191, 191, 191, 0.2); }
+  .v-radio.disabled.checked .v-radio-input__inner {
+    background-color: #bfbfbf; }
+
+.v-radio-group {
+  display: inline-block;
+  line-height: 28px; }
+  .v-radio-group .v-radio-button {
+    border-radius: 0; }
+    .v-radio-group .v-radio-button:first-child {
+      border-radius: 4px 0 0 4px; }
+    .v-radio-group .v-radio-button:last-child {
+      border-radius: 0 4px 4px 0; }
+    .v-radio-group .v-radio-button:not(:last-child) {
+      border-right: none; }
+    .v-radio-group .v-radio-button.checked:not(:last-child) + .v-radio-button {
+      border-left-color: #49a9ee; }
+
+.v-radio-button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 8px;
+  text-align: left;
+  border: 1px solid #D9D9D9;
+  border-radius: 4px; }
+  .v-radio-button.checked {
+    color: #49a9ee;
+    border-color: #49a9ee; }
+  .v-radio-button.disabled {
+    color: #bfbfbf;
+    background-color: rgba(191, 191, 191, 0.2);
+    cursor: not-allowed; }
+  .v-radio-button-origin {
+    display: none;
+    background: transparent; }
