@@ -6,7 +6,8 @@
       :data="data"
       list-type="picture-single"
       :before-upload="beforeUpload"
-      @preview="handlePreview">
+      @preview="handlePreview"
+      compress>
     </v-upload>
   </div>
 </template>
@@ -16,7 +17,7 @@ export default {
   data () {
     return {
       data: {
-        token: 'AJbFeJvpHXUOrGXkSHbhcbreUIJQx1WU7FF8TXAA:7qO8zH3oHnC-eFOhDYhACLe2dLg=:eyJzY29wZSI6InRlc3QiLCJkZWFkbGluZSI6MTQ5OTg1NjUxOX0=',
+        token: 'AJbFeJvpHXUOrGXkSHbhcbreUIJQx1WU7FF8TXAA:i4spkoWEPnQmVAn1vd9EzTtPmnM=:eyJzY29wZSI6InRlc3QiLCJkZWFkbGluZSI6MTUwMjA5NjQ4Mn0=',
         key: new Date().getTime()
       },
       fileList: []

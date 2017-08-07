@@ -18,6 +18,7 @@
 <script>
 export default {
   name: 'vRadioButton',
+
   props: {
     value: {},
     label: { // 选项的值
@@ -28,6 +29,7 @@ export default {
       default: false
     }
   },
+
   computed: {
     inGroup () {
       let parent = this.$parent

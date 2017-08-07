@@ -72,7 +72,7 @@
         <div
           class="v-upload-list-item-status"
           v-if="transfer.status === 'error'">
-          <v-icon type="close-circle"></v-icon>
+          <v-icon type="warning-circle"></v-icon>
         </div>
         <div
           class="v-upload-list-item-status"
@@ -119,6 +119,7 @@
 </template>
 
 <script>
+import { compressFile } from './FileUtil'
 import FileUpload from './FileUpload'
 import uuid from 'uuid'
 
@@ -138,48 +139,46 @@ export default {
 
   props: {
     value: {},
-    name: {
+    name: { // 后台接收的参数名
       type: String,
       default: 'file'
     },
-    action: {
+    action: { // 请求地址
       type: String,
       required: true
     },
-    data: {
+    data: { // 附加数据
       type: Object
     },
-    headers: {
+    headers: { // 附加header
       type: Object
     },
-    acceptType: {
-      type: RegExp
-    },
-    maxSize: {
-      type: Number
-    },
-    disabled: {
+    disabled: { // 是否禁用
       type: Boolean,
       default: false
     },
-    showUploadList: {
+    autoUpload: { // 是否选择后立即上传
       type: Boolean,
       default: true
     },
-    autoUpload: {
-      type: Boolean,
-      default: true
-    },
-    beforeUpload: {
+    beforeUpload: { // 上传前的处理
       type: Function
     },
-    listType: {
+    showUploadList: { // 展示上传列表
+      type: Boolean,
+      default: true
+    },
+    listType: { // 上传列表样式
       type: String,
       default: 'text'
     },
-    defaultPreview: {
+    defaultPreview: { // 默认预览样式
       type: Boolean,
       default: true
+    },
+    compress: { // 是否压缩
+      type: Boolean,
+      default: false
     }
   },
 
@@ -225,6 +224,7 @@ export default {
         vm.$emit('success', transfer)
       }, 100)
     },
+
     handleUploadError (e, file, xhr) {
       const vm = this
       let transfer = this.transferList.find((data) => {
@@ -297,31 +297,44 @@ export default {
             return
           }
         }
-        if (vm.acceptType && !vm.acceptType.test(file.type)) {
-          vm.$emit('error', new Error(123, `filetype must match as ${vm.acceptType}`))
-          break
-        }
-        if (file.size && file.size > vm.maxSize) {
-          vm.$emit('error', new Error(123, `filetype must less than ${vm.maxSize}`))
-          break
-        }
         let id = uuid.v1()
-        let transfer = {
-          id,
-          name: file.name,
-          size: file.size,
-          status: 'beforeUpload',
-          progress: 0,
-          raw: file
+        if (vm.compress && /^image\//.test(file.type)) { // 如果设置需要压缩，且类型是图片，执行压缩
+          compressFile(file, {
+            success: function (newFile) {
+              let transfer = {
+                id,
+                name: newFile.name,
+                size: newFile.size,
+                status: 'beforeUpload',
+                progress: 0,
+                raw: newFile
+              }
+              if (vm.listType === 'picture-single') {
+                vm.transferList = [transfer]
+              } else {
+                vm.transferList.push(transfer)
+              }
+              vm.$emit('input', vm.transferList)
+              vm.upload(vm.action, newFile)
+            }
+          })
+        } else { // 直接上传
+          let transfer = {
+            id,
+            name: file.name,
+            size: file.size,
+            status: 'beforeUpload',
+            progress: 0,
+            raw: file
+          }
+          if (vm.listType === 'picture-single') {
+            vm.transferList = [transfer]
+          } else {
+            vm.transferList.push(transfer)
+          }
+          vm.$emit('input', vm.transferList)
+          vm.upload(vm.action, file)
         }
-        if (vm.listType === 'picture-single') {
-          vm.transferList = [transfer]
-        } else {
-          vm.transferList.push(transfer)
-        }
-
-        vm.$emit('input', vm.transferList)
-        vm.upload(vm.action, file)
       }
     },
 
