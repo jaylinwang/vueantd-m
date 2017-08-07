@@ -119,7 +119,6 @@
 </template>
 
 <script>
-import { compressFile } from './FileUtil'
 import FileUpload from './FileUpload'
 import uuid from 'uuid'
 
@@ -276,7 +275,8 @@ export default {
       }
       let upload = new FileUpload(action, file, {
         name: vm.name,
-        data: vm.data
+        data: vm.data,
+        compress: vm.compress
       })
       transfer.status = 'uploading'
       vm.$emit('input', vm.transferList)
@@ -298,43 +298,21 @@ export default {
           }
         }
         let id = uuid.v1()
-        if (vm.compress && /^image\//.test(file.type)) { // 如果设置需要压缩，且类型是图片，执行压缩
-          compressFile(file, {
-            success: function (newFile) {
-              let transfer = {
-                id,
-                name: newFile.name,
-                size: newFile.size,
-                status: 'beforeUpload',
-                progress: 0,
-                raw: newFile
-              }
-              if (vm.listType === 'picture-single') {
-                vm.transferList = [transfer]
-              } else {
-                vm.transferList.push(transfer)
-              }
-              vm.$emit('input', vm.transferList)
-              vm.upload(vm.action, newFile)
-            }
-          })
-        } else { // 直接上传
-          let transfer = {
-            id,
-            name: file.name,
-            size: file.size,
-            status: 'beforeUpload',
-            progress: 0,
-            raw: file
-          }
-          if (vm.listType === 'picture-single') {
-            vm.transferList = [transfer]
-          } else {
-            vm.transferList.push(transfer)
-          }
-          vm.$emit('input', vm.transferList)
-          vm.upload(vm.action, file)
+        let transfer = {
+          id,
+          name: file.name,
+          size: file.size,
+          status: 'beforeUpload',
+          progress: 0,
+          raw: file
         }
+        if (vm.listType === 'picture-single') {
+          vm.transferList = [transfer]
+        } else {
+          vm.transferList.push(transfer)
+        }
+        vm.$emit('input', vm.transferList)
+        vm.upload(vm.action, file)
       }
     },
 

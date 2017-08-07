@@ -1,3 +1,5 @@
+import { compressFile } from './FileUtil'
+
 /**
  * 文件上传对象
  * @param {String} action 上传地址
@@ -5,11 +7,11 @@
  * @param {Object} options 上传配置
  *        name: 文件参数名
  *        data: 扩展参数
+ *        compress: 是否需要压缩
  */
 function FileUpload (action, file, options) {
   let formData = new FormData()
   let self = this
-  formData.append(options.name, file)
   if (options.data) {
     let data = options.data
     for (let key in data) {
@@ -34,7 +36,18 @@ function FileUpload (action, file, options) {
       self.onProgress(e, file)
     }
   }, false)
-  xhr.open('POST', action)
-  xhr.send(formData)
+  if (options.compress && /^image\//.test(file.type)) { // 如果设置需要压缩，且类型是图片，执行压缩
+    compressFile(file, {
+      success: function (blob) {
+        formData.append(options.name, blob)
+        xhr.open('POST', action)
+        xhr.send(formData)
+      }
+    })
+  } else {
+    formData.append(options.name, file)
+    xhr.open('POST', action)
+    xhr.send(formData)
+  }
 }
 export default FileUpload

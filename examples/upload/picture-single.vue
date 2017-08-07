@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       data: {
-        token: 'AJbFeJvpHXUOrGXkSHbhcbreUIJQx1WU7FF8TXAA:i4spkoWEPnQmVAn1vd9EzTtPmnM=:eyJzY29wZSI6InRlc3QiLCJkZWFkbGluZSI6MTUwMjA5NjQ4Mn0=',
+        token: 'AJbFeJvpHXUOrGXkSHbhcbreUIJQx1WU7FF8TXAA:iJN_IYbyDePXoyO9A6my4KsMRW4=:eyJzY29wZSI6InRlc3QiLCJkZWFkbGluZSI6MTUwMjEwMDk1M30=',
         key: new Date().getTime()
       },
       fileList: []

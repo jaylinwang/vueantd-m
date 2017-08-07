@@ -2,35 +2,25 @@
  * base64 dataURI 转换为 blob 对象
  * @param {String} dataURI
  */
-function dataURL2File (dataURI, name) {
-  var byteStr
-  var intArray
-  var ab
-  var i
-  var mimetype
-  var parts
-
-  parts = dataURI.split(',')
-  parts[1] = parts[1].replace(/\s/g, '')
-
-  if (~parts[0].indexOf('base64')) {
-    byteStr = window.atob(parts[1])
+function dataURL2Blob (dataURI) {
+  let parts = dataURI.split(',')
+  let code = window.atob(parts[1])
+  let contentType = parts[0].split(';')[0].split(':')[1]
+  let buffer = new ArrayBuffer(code.length)
+  let uintArray = new Uint8Array(buffer)
+  for (var i = 0; i < code.length; i++) {
+    uintArray[i] = code.charCodeAt(i)
+  }
+  var Builder = window.WebKitBlobBuilder || window.MozBlobBuilder
+  if (Builder) {
+    var builder = new Builder()
+    builder.append(buffer)
+    return buffer.getBlob()
   } else {
-    byteStr = decodeURIComponent(parts[1])
+    return new window.Blob([buffer], {
+      type: contentType
+    })
   }
-
-  ab = new ArrayBuffer(byteStr.length)
-  intArray = new Uint8Array(ab)
-
-  for (i = 0; i < byteStr.length; i++) {
-    intArray[i] = byteStr.charCodeAt(i)
-  }
-
-  mimetype = parts[0].split(':')[1].split(';')[0]
-
-  return new window.File([ab], name, {
-    type: mimetype
-  })
 }
 
 /**
@@ -62,7 +52,7 @@ function compressFile (file, options) {
   }
   img.onload = function (e) {
     if (img.width < _options.maxWidth) { // 如果图片宽度小于临界值，只压缩质量
-      let blob = dataURL2File(img.src, file.name)
+      let blob = dataURL2Blob(img.src)
       _options.success(blob)
     } else { // 如果图片宽度大于临界值，先压缩尺寸，再压缩质量
       let width = _options.maxWidth
@@ -72,7 +62,7 @@ function compressFile (file, options) {
       let ctx = canvas.getContext('2d')
       ctx.drawImage(img, 0, 0, width, height)
       let imgDataURL = canvas.toDataURL(file.type, _options.ratio)
-      let blob = dataURL2File(imgDataURL, file.name)
+      let blob = dataURL2Blob(imgDataURL)
       _options.success(blob)
     }
   }
