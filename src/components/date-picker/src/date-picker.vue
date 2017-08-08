@@ -52,9 +52,11 @@ export default {
       defaultDate.date()
     ]
   },
+
   methods: {
     handleDateSelected (val) {
       let date = moment(val)
+      this.$emit('input', date)
       this.$emit('selected', date)
     }
   }
