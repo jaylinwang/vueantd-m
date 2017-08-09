@@ -102,22 +102,14 @@ export default {
           level: this.level
         })
       }
+    },
+    innerValue (val) {
+      this._refreshSelected()
     }
   },
 
   created () {
-    let selectedIndex = this.defaultSelectedIndex
-    for (let i = 0, len = this.dataSource.length; i < len; i++) {
-      if (this.dataSource[i].label === this.innerValue) {
-        selectedIndex = i
-        break
-      }
-    }
-    this.contentTranslateY = (this.offset - selectedIndex) * this.rowHeight
-    this.dispatch('vPicker', 'group.change', {
-      item: this.dataSource[selectedIndex],
-      level: this.level
-    })
+    this._refreshSelected()
   },
 
   methods: {
@@ -126,6 +118,20 @@ export default {
     },
     cancel () {
       this.isPickerOpen = false
+    },
+    _refreshSelected () { // 刷新当前选中项
+      let selectedIndex = this.defaultSelectedIndex
+      for (let i = 0, len = this.dataSource.length; i < len; i++) {
+        if (this.dataSource[i].label === this.innerValue) {
+          selectedIndex = i
+          break
+        }
+      }
+      this.contentTranslateY = (this.offset - selectedIndex) * this.rowHeight
+      this.dispatch('vPicker', 'group.change', {
+        item: this.dataSource[selectedIndex],
+        level: this.level
+      })
     },
     _start (pageX) {
       this.tempTranslateY = this.contentTranslateY

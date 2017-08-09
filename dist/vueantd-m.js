@@ -30957,22 +30957,14 @@ exports.default = {
           level: this.level
         });
       }
+    },
+    innerValue: function innerValue(val) {
+      this._refreshSelected();
     }
   },
 
   created: function created() {
-    var selectedIndex = this.defaultSelectedIndex;
-    for (var i = 0, len = this.dataSource.length; i < len; i++) {
-      if (this.dataSource[i].label === this.innerValue) {
-        selectedIndex = i;
-        break;
-      }
-    }
-    this.contentTranslateY = (this.offset - selectedIndex) * this.rowHeight;
-    this.dispatch('vPicker', 'group.change', {
-      item: this.dataSource[selectedIndex],
-      level: this.level
-    });
+    this._refreshSelected();
   },
 
 
@@ -30982,6 +30974,21 @@ exports.default = {
     },
     cancel: function cancel() {
       this.isPickerOpen = false;
+    },
+    _refreshSelected: function _refreshSelected() {
+      // 刷新当前选中项
+      var selectedIndex = this.defaultSelectedIndex;
+      for (var i = 0, len = this.dataSource.length; i < len; i++) {
+        if (this.dataSource[i].label === this.innerValue) {
+          selectedIndex = i;
+          break;
+        }
+      }
+      this.contentTranslateY = (this.offset - selectedIndex) * this.rowHeight;
+      this.dispatch('vPicker', 'group.change', {
+        item: this.dataSource[selectedIndex],
+        level: this.level
+      });
     },
     _start: function _start(pageX) {
       this.tempTranslateY = this.contentTranslateY;
@@ -31101,11 +31108,6 @@ exports.default = {
   created: function created() {
     this.cascadeList.push(this.dataSource);
     this.$on('group.change', this.handleGroupChange);
-    if (Array.isArray(this.value)) {
-      this.initializeValue = [].concat(this.value);
-    } else {
-      this.initializeValue = this.value;
-    }
   },
 
 
@@ -31139,9 +31141,16 @@ exports.default = {
     },
     open: function open() {
       this.isPickerOpen = true;
+      // 记录初始值
+      if (Array.isArray(this.value)) {
+        this.initializeValue = [].concat(this.value);
+      } else {
+        this.initializeValue = this.value;
+      }
     },
     cancel: function cancel() {
       this.isPickerOpen = false;
+      // 还原初始值
       this.$emit('input', this.initializeValue);
     },
     submitValue: function submitValue() {

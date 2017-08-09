@@ -15,9 +15,17 @@ import moment from 'moment'
 export default {
   data () {
     return {
-      date: moment('2016-1-1')
+      date: ''
     }
   },
+
+  created () {
+    const vm = this
+    setTimeout(function () {
+      vm.date = moment('2016-1-1')
+    }, 100)
+  },
+
   methods: {
     handlePickerSelected (date) {
       console.log(date.format('YYYY-MM-DD'))
