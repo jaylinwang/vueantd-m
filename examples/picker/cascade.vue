@@ -5,7 +5,7 @@
     :data-source="pickerData"
     mode="cascade"
     @selected="handlePickerSelected">
-    <span>picker</span>
+    <span>picker: {{ pickerValue }}</span>
   </v-picker>
 </div>
 </template>

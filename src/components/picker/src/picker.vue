@@ -60,7 +60,8 @@ export default {
   data () {
     return {
       isPickerOpen: false,
-      cascadeList: []
+      cascadeList: [],
+      initializeValue: null // 组件初始值
     }
   },
 
@@ -114,9 +115,17 @@ export default {
     },
     open () {
       this.isPickerOpen = true
+      // 记录初始值
+      if (Array.isArray(this.value)) {
+        this.initializeValue = [].concat(this.value)
+      } else {
+        this.initializeValue = this.value
+      }
     },
     cancel () {
       this.isPickerOpen = false
+      // 还原初始值
+      this.$emit('input', this.initializeValue)
     },
     submitValue () {
       this.isPickerOpen = false

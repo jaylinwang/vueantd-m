@@ -31077,7 +31077,8 @@ exports.default = {
   data: function data() {
     return {
       isPickerOpen: false,
-      cascadeList: []
+      cascadeList: [],
+      initializeValue: null // 组件初始值
     };
   },
 
@@ -31100,6 +31101,11 @@ exports.default = {
   created: function created() {
     this.cascadeList.push(this.dataSource);
     this.$on('group.change', this.handleGroupChange);
+    if (Array.isArray(this.value)) {
+      this.initializeValue = [].concat(this.value);
+    } else {
+      this.initializeValue = this.value;
+    }
   },
 
 
@@ -31136,6 +31142,7 @@ exports.default = {
     },
     cancel: function cancel() {
       this.isPickerOpen = false;
+      this.$emit('input', this.initializeValue);
     },
     submitValue: function submitValue() {
       var _this = this;

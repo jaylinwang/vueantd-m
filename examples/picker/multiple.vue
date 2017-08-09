@@ -5,7 +5,7 @@
     mode="multiple"
     :data-source="pickerData"
     @selected="handlePickerSelected">
-    picker
+    <span>picker: {{ pickerValue }}</span>
   </v-picker>
 </div>
 </template>

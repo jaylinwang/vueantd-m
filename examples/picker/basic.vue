@@ -4,7 +4,7 @@
     v-model="pickerValue"
     :data-source="pickerData"
     @selected="handlePickerSelected">
-    <span>picker</span>
+    <span>picker: {{ pickerValue }}</span>
   </v-picker>
 </div>
 </template>
