@@ -55,7 +55,11 @@ export default {
 
   methods: {
     handleDateSelected (val) {
-      let date = moment(val)
+      let date = moment([
+        val[0],
+        val[1] - 1,
+        val[2]
+      ])
       this.$emit('input', date)
       this.$emit('selected', date)
     }
