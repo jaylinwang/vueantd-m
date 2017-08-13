@@ -102,9 +102,6 @@ export default {
           level: this.level
         })
       }
-    },
-    innerValue (val) {
-      this._refreshSelected()
     }
   },
 

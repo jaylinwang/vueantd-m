@@ -4,7 +4,8 @@
     v-model="pickerValue"
     :data-source="pickerData"
     mode="cascade"
-    @selected="handlePickerSelected">
+    @selected="handlePickerSelected"
+    @change="handlePickerChange">
     <span>picker: {{ pickerValue }}</span>
   </v-picker>
 </div>
@@ -62,6 +63,9 @@ export default {
     handlePickerSelected (value, item) {
       console.log(value)
       console.log(item)
+    },
+    handlePickerChange (val, level) {
+      console.log(val)
     }
   }
 }

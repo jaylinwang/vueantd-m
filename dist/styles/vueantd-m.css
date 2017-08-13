@@ -2033,3 +2033,138 @@ html, body {
   .v-radio-button-origin {
     display: none;
     background: transparent; }
+
+.v-switch {
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
+  line-height: 1;
+  cursor: pointer; }
+  .v-switch * {
+    box-sizing: border-box; }
+
+.v-switch-input {
+  display: inline-block;
+  position: relative;
+  height: 22px;
+  min-width: 44px;
+  padding: 1px;
+  border-radius: 22px;
+  background-color: rgba(0, 0, 0, 0.25);
+  vertical-align: bottom; }
+  .v-switch-input__inner {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    background-color: #FFF;
+    transform: translateX(0);
+    transition: transform 200ms, width 100ms; }
+    .v-switch-input__inner.mousedown {
+      width: 26px; }
+  .v-switch-input__origin {
+    display: none; }
+  .v-switch-input__off, .v-switch-input__on {
+    position: absolute;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    color: #FFF;
+    font-weight: 200; }
+  .v-switch-input__off {
+    right: 6px; }
+  .v-switch-input__on {
+    left: 6px; }
+
+.v-switch.on .v-switch-input {
+  background-color: #108ee9; }
+  .v-switch.on .v-switch-input__inner {
+    transform: translateX(22px); }
+    .v-switch.on .v-switch-input__inner.mousedown {
+      transform: translateX(16px); }
+
+.v-switch.disabled {
+  cursor: not-allowed; }
+  .v-switch.disabled .v-switch-input {
+    border-color: #bfbfbf;
+    background-color: rgba(191, 191, 191, 0.2); }
+    .v-switch.disabled .v-switch-input__inner {
+      background-color: rgba(191, 191, 191, 0.6); }
+
+.v-switch-label {
+  display: inline-block;
+  line-height: 22px; }
+
+.v-checkbox {
+  display: inline-block;
+  font-size: 16px;
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "SimSun", sans-serif;
+  line-height: 1;
+  cursor: pointer; }
+  .v-checkbox * {
+    box-sizing: border-box; }
+  .v-checkbox:hover .v-checkbox-input {
+    border-color: #108ee9; }
+
+.v-checkbox-input {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  text-align: center;
+  vertical-align: text-bottom;
+  border: 1px solid #D9D9D9;
+  border-radius: 2px; }
+  .v-checkbox-input__origin {
+    height: 0;
+    width: 0;
+    display: none; }
+  .v-checkbox-input__inner {
+    position: relative; }
+    .v-checkbox-input__inner:after {
+      position: absolute;
+      left: 3px;
+      top: 4px;
+      content: " ";
+      display: block;
+      height: 3px;
+      width: 7px;
+      border: 2px solid #FFF;
+      border-top: 0;
+      border-right: 0;
+      transform: rotate(-45deg) scale(0);
+      transition: all 100ms; }
+
+.v-checkbox-label {
+  display: inline-block;
+  padding-left: 2px;
+  line-height: 16px; }
+
+.v-checkbox.checked .v-checkbox-input {
+  background-color: #108ee9;
+  border-color: #108ee9; }
+  .v-checkbox.checked .v-checkbox-input__inner:after {
+    transform: rotate(-45deg) scale(1); }
+
+.v-checkbox.indeterminate .v-checkbox-input {
+  background-color: #108ee9;
+  border-color: #108ee9; }
+  .v-checkbox.indeterminate .v-checkbox-input__inner:after {
+    border-left: 0;
+    width: 10px;
+    transform: rotate(0deg) scale(1); }
+
+.v-checkbox.disabled {
+  cursor: not-allowed; }
+  .v-checkbox.disabled .v-checkbox-input {
+    background-color: rgba(191, 191, 191, 0.2);
+    border-color: #bfbfbf; }
+  .v-checkbox.disabled.checked .v-checkbox-input {
+    background-color: rgba(191, 191, 191, 0.2);
+    border-color: #bfbfbf; }
+    .v-checkbox.disabled.checked .v-checkbox-input__inner:after {
+      border-color: #bfbfbf;
+      transform: rotate(-45deg) scale(1); }
+
+.v-checkbox-group {
+  display: inline-block;
+  line-height: 28px; }

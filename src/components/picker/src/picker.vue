@@ -59,9 +59,9 @@ export default {
 
   data () {
     return {
-      isPickerOpen: false,
-      cascadeList: [],
-      initializeValue: null // 组件初始值
+      isPickerOpen: false, // 控制picker的显示
+      initializeValue: null, // 组件初始值
+      cascadeList: [] // 级联时的选项列表
     }
   },
 
@@ -81,8 +81,19 @@ export default {
   },
 
   created () {
-    this.cascadeList.push(this.dataSource)
+    if (this.mode === 'cascade') {
+      this.cascadeList.push(this.dataSource) // 初始化级联
+    }
     this.$on('group.change', this.handleGroupChange)
+  },
+
+  watch: {
+    dataSource (val) {
+      if (this.mode === 'cascade') { // 异步更新级联选项时触发
+        this.cascadeList = []
+        this.cascadeList.push(val)
+      }
+    }
   },
 
   computed: {
@@ -99,18 +110,24 @@ export default {
   methods: {
     handleGroupChange (data) {
       if (this.mode === 'single') {
-        this.$emit('input', data.item.label)
+        this.$emit('change', this.innerValue, data.item)
+        this.innerValue = data.item.label
       }
       if (this.mode === 'multiple') {
+        this.$emit('change', this.innerValue, data.item)
         this.innerValue.splice(data.level, 1, data.item.label)
       }
       if (this.mode === 'cascade') {
         this.innerValue.splice(data.level, 1, data.item.label)
-        if (data.item.children) {
-          this.cascadeList.splice(data.level + 1, 1, data.item.children)
-        } else {
-          this.cascadeList.splice(data.level + 1, 1)
-        }
+        this.$emit('change', this.innerValue, data.item)
+        // 临时性解决方案，需要改进
+        setTimeout(() => {
+          if (data.item.children) {
+            this.cascadeList.splice(data.level + 1, 1, data.item.children)
+          } else {
+            this.cascadeList.splice(data.level + 1, 1)
+          }
+        }, 1000)
       }
     },
     open () {

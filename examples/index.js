@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import VueWeui from '../src/components'
 import '../src/styles/index.scss'
 import './index.scss'
+
 // 生产模式测试
 // import VueWeui from '../dist/vueantd-m.js'
 // import '../dist/styles/vueantd-m.css'
@@ -62,6 +63,12 @@ const routes = [{
 }, {
   path: '/radio',
   component: require('./radio/index.vue')
+}, {
+  path: '/switch',
+  component: require('./switch/index.vue')
+}, {
+  path: '/checkbox',
+  component: require('./checkbox/index.vue')
 }]
 
 const router = new VueRouter({

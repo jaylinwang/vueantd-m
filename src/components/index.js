@@ -14,6 +14,8 @@ import { Masker } from './masker'
 import { Picker } from './picker'
 import { DatePicker, MonthPicker } from './date-picker'
 import { Radio, RadioButton, RadioGroup } from './radio'
+import { Switch } from './switch'
+import { Checkbox, CheckboxGroup } from './checkbox'
 
 const install = (Vue) => {
   Vue.component(Row.name, Row)
@@ -41,6 +43,9 @@ const install = (Vue) => {
   Vue.component(Radio.name, Radio)
   Vue.component(RadioButton.name, RadioButton)
   Vue.component(RadioGroup.name, RadioGroup)
+  Vue.component(Switch.name, Switch)
+  Vue.component(Checkbox.name, Checkbox)
+  Vue.component(CheckboxGroup.name, CheckboxGroup)
 
   Vue.prototype.$modal = FastModal
   Vue.prototype.$message = Message
@@ -72,7 +77,8 @@ export {
   MonthPicker,
   Radio,
   RadioButton,
-  RadioGroup
+  RadioGroup,
+  Switch
 }
 
 export default {
