@@ -31318,6 +31318,9 @@ exports.default = {
     mode: { // picker方式
       type: String,
       default: 'single'
+    },
+    loadData: { // 加载远程数据的方法
+      type: Function
     }
   },
 
@@ -31328,18 +31331,6 @@ exports.default = {
     this.$on('group.change', this.handleGroupChange);
   },
 
-
-  watch: {
-    // dataSource (val) {
-    //   if (this.mode === 'cascade') { // 异步更新级联选项时触发
-    //     this.cascadeList = []
-    //     this.cascadeList.push(val)
-    //   }
-    // },
-    // cascadeList (val) {
-    //   console.log(val)
-    // }
-  },
 
   computed: {
     innerValue: {
@@ -31354,6 +31345,7 @@ exports.default = {
 
   methods: {
     handleGroupChange: function handleGroupChange(data) {
+      var vm = this;
       if (this.mode === 'single') {
         this.innerValue = data.item.label;
       }
@@ -31362,14 +31354,20 @@ exports.default = {
       }
       if (this.mode === 'cascade') {
         this.innerValue.splice(data.level, 1, data.item.label);
-        // if (data.level === this.innerValue.length - 1) { // 最后一项选择时触发组件的change事件
-        //   this.$emit('change', this.innerValue, data.item)
-        // }
-        this.$emit('change', this.innerValue, data.item);
-        if (data.item.children) {
-          this.cascadeList.splice(data.level + 1, 1, data.item.children);
+        if (this.loadData) {
+          this.loadData(data.item, data.level, function () {
+            if (data.item.children) {
+              vm.cascadeList.splice(data.level + 1, 1, data.item.children);
+            } else {
+              vm.cascadeList.splice(data.level + 1, 1);
+            }
+          });
         } else {
-          this.cascadeList.splice(data.level + 1, 1);
+          if (data.item.children) {
+            this.cascadeList.splice(data.level + 1, 1, data.item.children);
+          } else {
+            this.cascadeList.splice(data.level + 1, 1);
+          }
         }
       }
     },

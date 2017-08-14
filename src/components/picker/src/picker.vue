@@ -77,6 +77,9 @@ export default {
     mode: { // picker方式
       type: String,
       default: 'single'
+    },
+    loadData: { // 加载远程数据的方法
+      type: Function
     }
   },
 
@@ -85,15 +88,6 @@ export default {
       this.cascadeList.push(this.dataSource) // 初始化级联
     }
     this.$on('group.change', this.handleGroupChange)
-  },
-
-  watch: {
-    dataSource (val) {
-      if (this.mode === 'cascade') { // 异步更新级联选项时触发
-        this.cascadeList = []
-        this.cascadeList.push(val)
-      }
-    }
   },
 
   computed: {
@@ -109,25 +103,30 @@ export default {
 
   methods: {
     handleGroupChange (data) {
+      const vm = this
       if (this.mode === 'single') {
-        this.$emit('change', this.innerValue, data.item)
         this.innerValue = data.item.label
       }
       if (this.mode === 'multiple') {
-        this.$emit('change', this.innerValue, data.item)
         this.innerValue.splice(data.level, 1, data.item.label)
       }
       if (this.mode === 'cascade') {
         this.innerValue.splice(data.level, 1, data.item.label)
-        this.$emit('change', this.innerValue, data.item)
-        // 临时性解决方案，需要改进
-        setTimeout(() => {
+        if (this.loadData) {
+          this.loadData(data.item, data.level, () => {
+            if (data.item.children) {
+              vm.cascadeList.splice(data.level + 1, 1, data.item.children)
+            } else {
+              vm.cascadeList.splice(data.level + 1, 1)
+            }
+          })
+        } else {
           if (data.item.children) {
             this.cascadeList.splice(data.level + 1, 1, data.item.children)
           } else {
             this.cascadeList.splice(data.level + 1, 1)
           }
-        }, 1000)
+        }
       }
     },
     open () {
