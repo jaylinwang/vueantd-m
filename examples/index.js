@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 开发模式
-import VueWeui from '../src/components'
-import '../src/styles/index.scss'
-import './index.scss'
+// import VueWeui from '../src/components'
+// import '../src/styles/index.scss'
+// import './index.scss'
 
 // 生产模式测试
-// import VueWeui from '../dist/vueantd-m.js'
-// import '../dist/styles/vueantd-m.css'
+import VueWeui from '../dist/vueantd-m.js'
+import '../dist/styles/vueantd-m.css'
 
 Vue.use(VueRouter)
 Vue.use(VueWeui)

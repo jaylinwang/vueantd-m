@@ -88,7 +88,6 @@ export default {
     }
   },
 
-
   methods: {
     handleOk () {
       this.$emit('ok')
@@ -96,6 +95,10 @@ export default {
     handleCancel () {
       this.$emit('cancel')
     }
+  },
+
+  mounted () {
+    console.log('modal mounted')
   }
 }
 </script>

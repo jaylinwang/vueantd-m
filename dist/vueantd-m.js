@@ -30974,6 +30974,10 @@ exports.default = {
     handleCancel: function handleCancel() {
       this.$emit('cancel');
     }
+  },
+
+  mounted: function mounted() {
+    console.log('modal mounted');
   }
 };
 
