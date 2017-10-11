@@ -45,8 +45,6 @@ const typeIconKV = {
 }
 
 export default {
-  name: 'vFastModalBox',
-
   data () {
     return {
       typeIconKV,
@@ -95,10 +93,6 @@ export default {
     handleCancel () {
       this.$emit('cancel')
     }
-  },
-
-  mounted () {
-    console.log('modal mounted')
   }
 }
 </script>

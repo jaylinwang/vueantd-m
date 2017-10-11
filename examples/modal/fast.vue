@@ -58,6 +58,7 @@ export default {
             cancelText: '走',
             ok: function () {
               confirm.close()
+              console.log('ok')
               vm.$message.info('确认操作')
             },
             cancel: function () {

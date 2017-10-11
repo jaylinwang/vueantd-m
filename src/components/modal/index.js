@@ -2,8 +2,6 @@ import Vue from 'vue'
 import Modal from './src/modal.vue'
 import FastModalBox from './src/fast-modal-box.vue'
 
-Vue.component(FastModalBox.name, FastModalBox)
-
 const modal = function (type, options) {
   let $modalRoot = document.createElement('div')
   $modalRoot.setAttribute('id', 'ModalRoot')
@@ -16,7 +14,7 @@ const modal = function (type, options) {
   }, options)
 
   $modalRoot.innerHTML = `
-    <v-fast-modal-box
+    <fast-modal-box
       type="${type}"
       title="${_options.title}"
       content="${_options.content}"
@@ -24,11 +22,14 @@ const modal = function (type, options) {
       cancel-text="${_options.cancelText}"
       @ok="handelOk"
       @cancel="handleCancel">
-    </v-fast-modal-box>
+    </fast-modal-box>
   `
   document.body.appendChild($modalRoot)
 
   const fastModal = new Vue({
+    components: {
+      FastModalBox
+    },
     methods: {
       handelOk () {
         options.ok && options.ok()
