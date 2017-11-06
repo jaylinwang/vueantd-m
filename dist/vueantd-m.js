@@ -30510,6 +30510,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 
 exports.default = {
   name: 'vInput',
@@ -30548,6 +30549,9 @@ exports.default = {
       type: Number
     },
     maxRows: {
+      type: Number
+    },
+    maxlength: {
       type: Number
     }
   },
@@ -37645,7 +37649,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "v-input-origin",
     attrs: {
       "type": _vm.type,
-      "placeholder": _vm.placeholder
+      "placeholder": _vm.placeholder,
+      "maxlength": _vm.maxlength
     },
     domProps: {
       "value": _vm.innerValue

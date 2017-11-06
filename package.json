@@ -1,6 +1,6 @@
 {
   "name": "vueantd-m",
-  "version": "1.0.5-beta",
+  "version": "1.0.6-alpha",
   "description": "vueantd for mobile",
   "main": "dist/vueantd-m.js",
   "files": [

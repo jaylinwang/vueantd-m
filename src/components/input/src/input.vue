@@ -13,6 +13,7 @@
         :value="innerValue"
         :type="type"
         :placeholder="placeholder"
+        :maxlength="maxlength"
         @input="handleInput"
         @blur="handleInputBlur"
         @focus="handleInputFocus">
@@ -79,6 +80,9 @@ export default {
       type: Number
     },
     maxRows: {
+      type: Number
+    },
+    maxlength: {
       type: Number
     }
   },
