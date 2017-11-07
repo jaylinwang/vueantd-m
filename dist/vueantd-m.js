@@ -29236,6 +29236,7 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
 exports.default = {
   name: 'vButton',
@@ -29263,7 +29264,8 @@ exports.default = {
       default: false
     },
     nativeType: {
-      type: String
+      type: String,
+      default: 'button'
     }
   },
   data: function data() {
@@ -38162,7 +38164,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "v-btn",
     class: _vm.classList,
     attrs: {
-      "type": _vm.nativeType
+      "type": _vm.nativeType,
+      "disabled": _vm.disabled
     },
     on: {
       "mouseup": _vm.mouseup,

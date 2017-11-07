@@ -2,6 +2,7 @@
   <button class="v-btn"
     :type="nativeType"
     :class="classList"
+    :disabled="disabled"
     @mouseup="mouseup"
     @click.stop="handleClick">
     <v-icon
@@ -43,7 +44,8 @@
         default: false
       },
       nativeType: {
-        type: String
+        type: String,
+        default: 'button'
       }
     },
     data () {
@@ -84,6 +86,9 @@
         }, 300)
       },
       handleClick () {
+        if (this.disabled || this.loading) {
+          return
+        }
         this.$emit('click')
       }
     }
