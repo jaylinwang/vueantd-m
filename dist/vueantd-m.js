@@ -29312,6 +29312,9 @@ exports.default = {
       }, 300);
     },
     handleClick: function handleClick() {
+      if (this.disabled || this.loading) {
+        return;
+      }
       this.$emit('click');
     }
   }
